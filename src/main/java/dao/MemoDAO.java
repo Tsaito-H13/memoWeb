@@ -99,7 +99,7 @@ public class MemoDAO {
 			
 			conn.setAutoCommit(false);
 			
-			String sql = "INSERT INTO MEMO_DATA(category, title, memo, create_date, modified_date, is_deleted) VALUES(0,?,?,cast(now() as datetime), cast(now() as datetime), 0)";
+			String sql = "INSERT INTO MEMO_DATA(category, title, memo, create_date, modified_date, is_deleted) VALUES(0,?,?,now(), now(), 0)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, memo.getTitle());
 			pStmt.setString(2, memo.getMemo());
@@ -131,7 +131,7 @@ public class MemoDAO {
 			
 			conn.setAutoCommit(false);
 			
-			String sql = "UPDATE MEMO_DATA SET title = ?, memo = ?, modified_date = cast(now() as datetime)  WHERE memo_id=?";
+			String sql = "UPDATE MEMO_DATA SET title = ?, memo = ?, modified_date = now() WHERE memo_id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, memo.getTitle());
 			pStmt.setString(2, memo.getMemo());
